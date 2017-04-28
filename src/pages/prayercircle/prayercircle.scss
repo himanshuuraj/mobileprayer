@@ -1,0 +1,21 @@
+page-prayercircle {
+  .checkbox-ios .checkbox-checked {
+      border-color: brown;
+      background-color: brown;
+  }
+  .inviteToPrayerCircleDiv{
+    position:fixed;
+    display:block;
+    bottom:70px;
+    left:0px;
+    width:100%;
+    padding:5px;
+    height:50px;
+  }
+  .header{
+    min-height: 40px;
+    text-align: center;
+    font-size: 18px;
+    padding-top: 10px;
+  }
+}
