@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-//import { HomePage } from '../pages/home/home';
-import { Prayercircle } from '../pages/prayercircle/prayercircle';
+import { HomePage } from '../pages/home/home';
+//import { Prayercircle } from '../pages/prayercircle/prayercircle';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = Prayercircle;
+  rootPage:any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

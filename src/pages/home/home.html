@@ -8,7 +8,7 @@
 
 
 
-<ion-content *ngIf="false" padding>
+<ion-content padding *ngIf="false">
   <ion-grid>
     <ion-row>
       <ion-col>
@@ -62,7 +62,7 @@
   </ion-grid>
 </ion-content>
 
-<ion-content>
+<ion-content *ngIf="false">
   <div style="text-align:center;margin-top:10px;font-size:18px;">
     <b>My Profile</b>
   </div>
@@ -81,14 +81,41 @@
   </div>
 </ion-content>
 
-<ion-footer>
+<ion-content padding>
+  <div class="title">
+    <b>Create My Prayer Circle</b>
+  </div>
+  <div class="googleButton">
+    <button ion-button block style="background-color:red;width:100%;height:100%;">
+      <ion-icon ios="ios-call" md="md-call" style="font-size:30px;margin-right:15px;"></ion-icon>
+        <b style="font-size:19px;">Choose Contacts from My Phone</b>
+    </button>
+  </div>
+  <div class="facebookButton">
+    <button ion-button block style="background-color:blue;width:100%;height:100%;">
+      <ion-icon ios="ios-call" md="md-call" style="font-size:30px;margin-right:15px;"></ion-icon>
+        <b style="font-size:19px;">Choose Contacts from Facebook</b>
+    </button>
+  </div>
+  <ion-grid style="padding-top:15px;">
+    <ion-row>
+      <ion-col col-2>
+        <ion-checkbox style="float:right;border-radius:20%;">
+        </ion-checkbox>
+      </ion-col>
+      <ion-col col-10 style="font-size:16px;">
+        Connect With Friends Of My friends
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer *ngIf="true">
   <ion-toolbar>
     <div style="width:100%;height:100%;text-align:center;">
-      <!-- <ion-icon name="home" style="color:red;padding-right:10px;font-size:30px;"></ion-icon>
-      <span>HOME</span> -->
       <button ion-button full style="background-color:white;"  (click)='openFilters();'>
         <ion-icon ios="ios-home" md="md-home" style="color:red;padding-right:10px;font-size:30px;"></ion-icon>
-        <span style="color:black;">Home</span>
+        <span style="color:black;font-size:20px;"><b>Home</b></span>
       </button>
     </div>
   </ion-toolbar>
