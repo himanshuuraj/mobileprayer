@@ -41,18 +41,4 @@ page-home {
     min-height:150px;
     text-align: center;
   }
-  #modalElement{
-    position: fixed;
-    width: 90%;
-    height: auto;
-    top: 3%;
-    left: 5%;
-    border-radius: 5px;
-    max-height: 90%;
-    overflow: auto;
-    background-color: white;
-  }
-  ion-input > input{
-    text-align:center;
-  }
 }

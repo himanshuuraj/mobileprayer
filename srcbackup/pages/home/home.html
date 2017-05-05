@@ -11,14 +11,14 @@
 <ion-content padding>
   <ion-grid>
     <ion-row style="position:relative;min-height:150px;height:auto;">
-      <div class="imageDiv" (click)="getImageFromGallery();">
-        <span *ngIf="!imageUploadFlag" style="display:block;margin-top: 60px;font-size: 16px;">Upload <br> Photo</span>
-         <img *ngIf="imageUploadFlag" [src]="base64Image" style="width:100%;height:100%;"/>
+      <div class="imageDiv">
+        <span style="display:block;margin-top: 60px;font-size: 16px;">Upload <br> Photo</span>
+         <img *ngIf="imageUploadFlag" src="assets/img/cross.png" style="width:100%;height:100%;"/>
       </div>
     </ion-row>
     <ion-row>
       <ion-col text-center style="font-size:18px;">
-        <b>Christian Prayer Power</b>
+        Christian Prayer Power
       </ion-col>
     </ion-row>
     <ion-row>
@@ -26,47 +26,35 @@
         <ion-list>
           <ion-item style="border-top:none;padding-left:0px;">
             <ion-label floating text-center>First Name</ion-label>
-            <ion-input [(ngModel)]="firstName" id="firstName"></ion-input>
+            <ion-input></ion-input>
           </ion-item>
           <ion-item style="padding-left:0px;">
             <ion-label floating text-center>Last Name</ion-label>
-            <ion-input [(ngModel)]="lastName" id="lastName"></ion-input>
+            <ion-input></ion-input>
           </ion-item>
           <ion-item style="border-top:none;padding-left:0px;">
             <ion-label floating text-center>Phone Number</ion-label>
-            <ion-input [(ngModel)]="phoneNumber" id="phoneNumber"></ion-input>
+            <ion-input></ion-input>
           </ion-item>
           <ion-item style="border-top:none;padding-left:0px;">
             <ion-label floating text-center>Re-enter the phone number</ion-label>
-            <ion-input [(ngModel)]="reEnteredPhoneNumber"></ion-input>
+            <ion-input></ion-input>
           </ion-item>
         </ion-list>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col col-1>
-        <ion-checkbox style="float:right;border-radius:20%;" id="termsAndConditionsAcceptance">
-        </ion-checkbox>
+      <ion-col col-2>
+        <input type="checkbox" id="termsAndConditionsAcceptance" style="float:right;"/>
       </ion-col>
-      <ion-col style="font-size:15px;">
-        I accept the <span style="color:red;" (click)="showModal();">terms and conditions</span>
+      <ion-col>
+        I accept the <span style="color:red;">terms and conditions</span>
       </ion-col>
     </ion-row>
     <ion-row>
-      <button (click)="sendData()" ion-button full color="danger">Create My Profile</button>
+      <button (click)="getImageFromGallery()" ion-button full color="danger">Create My Profile</button>
     </ion-row>
   </ion-grid>
-  <div id="modalElement" style="display:none;">
-
-    You are responsible for reading and accepting the following Terms and Conditions in order to use the services provided by the application.
-    The contents, logo, trademark, other visual media, patents and intellectual property created Christian Prayer Power Inc. and utilized by the smartphone application and its associated computer systems and servers is the sole property of Christian Prayer Power Inc. and is protected by copyright laws. Nothing in the Terms of Use grants you a right or license to use any trademark, design, logo, or any other property owned by Christian Prayer Power Inc.
-    Your use of this application and access to any personal data thereby created may be terminated at any time by Christian Prayer Power Inc. in the event that you violate our Terms of Use and/or the laws of the State or Country in which you reside. The company is not obliged to notify you of such termination but may do so at its discretion.
-    Use of this application is governed by the applicable laws of the State of California and by such Federal regulations and laws as may be applicable as well as by the laws of the State and Country in which you use the application.
-    The application is designed to permit the user to send prayer requests to his/her designated prayer circle contacts and for such contacts to respond with personal messages of their own. Such content is governed by your rights and by accepting these Terms and Conditions you irrevocably assign to Christian Prayer Power Inc. a perpetual license to share such content with other users of the application in a manner consistent with the user-defined prayer circles aforementioned.
-    If any user created content is found to violate copyright infringement rules, Christian Prayer Power Inc. will respond to any DMCA takedown notices received and will thus remove any content deemed to violate third party copyright.
-    As a condition of use you promise not to use the services provided for any purpose that is unlawful or prohibited by these Terms and Conditions or for any purpose not reasonably intended by Christian Prayer Power Inc. By way of example but not as a limitation, you agree not to use the application and its services:
-    To abuse, harass, threaten, impersonate, or intimidate any person;
-  </div>
 </ion-content>
 
 <ion-content *ngIf="false">
@@ -117,7 +105,7 @@
   </ion-grid>
 </ion-content>
 
-<ion-footer *ngIf="false">
+<ion-footer *ngIf="true">
   <ion-toolbar>
     <div style="width:100%;height:100%;text-align:center;">
       <button ion-button full style="background-color:white;"  (click)='openFilters();'>

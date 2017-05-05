@@ -3,16 +3,19 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+//import { Http } from '@angular/http'
+//import {HTTP_PROVIDERS} from 'angular/http';
 import { HttpModule } from '@angular/http';
+import { Camera } from '@ionic-native/camera';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { Camera } from '@ionic-native/camera';
-
+import { Prayercircle } from '../pages/prayercircle/prayercircle';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    Prayercircle
   ],
   imports: [
     BrowserModule,
@@ -22,12 +25,12 @@ import { Camera } from '@ionic-native/camera';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    Prayercircle
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
