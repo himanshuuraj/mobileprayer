@@ -1,0 +1,100 @@
+page-prayercircle {
+
+
+  .item-md.item-block .item-inner {
+    padding-right: 0px;
+    border-bottom: .5px solid #dedede;
+  }
+
+  .item-ios.item-block .item-inner {
+    padding-right: 0px;
+    border-bottom: 0.5px solid #c8c7cc;
+  }
+
+  ion-content * {
+      font-family: aleo;
+    }
+  .checkbox-ios .checkbox-checked {
+      border-color: #ee2f24;
+      background-color: #ee2f24;
+  }
+  .checkbox-ios {
+    position: relative;
+    width: 21px;
+    height: 21px;
+    border-radius: 100%;
+    border-color: #c8c7cc;
+    background-color: #fff;
+}
+  .inviteToPrayerCircleDiv{
+    position:fixed;
+    display:block;
+    bottom:0px;
+    left:0px;
+    width:100%;
+    padding:5px;
+    height:54px;
+  }
+  .header{
+    min-height: 40px;
+    text-align: center;
+    font-size: 18px;
+  }
+  ion-checkbox{
+    border-radius:50%;
+  }
+  .checkbox-md .checkbox-icon{
+     border-radius:50%;
+     border-width:1px;
+  }
+
+
+  ion-thumbnail img {
+    width: 56px;
+    height: 56px;
+    border-radius:50% !important;
+   }
+
+  .item-md ion-thumbnail ion-img, .item-md ion-thumbnail img{
+    height:60px;
+    margin-top:10px;
+  }
+
+  .footerButton{
+    margin:0;
+  }
+
+  .item.item-md .checkbox-md {
+    margin : 9px 3px 9px 4px;
+  }
+  .checkbox-md .checkbox-icon {
+      position: relative;
+      width: 21px;
+      height: 21px;
+      margin-right: 5px;
+  }
+  .checkbox-md .checkbox-checked .checkbox-inner {
+      position: absolute;
+      top: 3px;
+      left: 6px;
+      width: 6px;
+      color:red;
+  }
+
+  .checkbox-md .checkbox-checked {
+      border-color: red;
+      background-color: red;
+  }
+
+  text-area{
+    height:100%;
+  }
+
+  .list-ios > .item-block:first-child {
+    border-top: 0px solid #c8c7cc;
+  }
+
+  .list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+     border-bottom: 0px solid #c8c7cc;
+   }
+}

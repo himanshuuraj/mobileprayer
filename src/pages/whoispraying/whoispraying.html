@@ -1,0 +1,73 @@
+<ion-content class="has-footer" id="first" style="position:fixed;left:0;top:0;">
+  <!--div swing-stack #myswing1 [stackConfig]="stackConfig" style="height:100%;"
+  (throwoutright)="voteUp(true,pageData)" (throwoutleft)="voteUp(false,pageData)"-->
+    <div style="display: block;font-size: 20px;text-align: center;width: 100%;height: 25px;margin-top: 20px;">
+      <b><span style="">{{noOfRequest}}</span>
+        <span style=""> Praying With Me Today</span></b>
+    </div>
+    <ion-slides style="height:100%;" dir="rtl">
+      <ion-slide *ngFor="let pageData of cards;let i=index" [attr.data-index]="i"
+        id="card-stack">
+        <div style="display:block;font-size:20px;text-align:center;margin-bottom:10%;">
+          <!--<b>Who's Praying With Me</b>-->
+        </div>
+        <!-- <div style="display:block;font-size:20px;text-align:center;">
+          <b><span style="float:left;margin-left:10%;">{{noOfRequest}}</span>
+            <span style="float:left;margin-left:5%;"> Praying With Me Today</span></b>
+        </div> -->
+        <ion-grid style="height:15%;">
+          <ion-row style="height:100%;">
+            <ion-col style="font-size:22px;padding-top:8%;text-align:left;">
+              <b>{{pageData.username}}</b>
+            </ion-col>
+            <ion-col style="height:100%;max-width: 20%;">
+              <img [src]="pageData.url || 'https://s3-us-west-1.amazonaws.com/pp-cpp/ananymous/default.png'"
+              style="position: absolute;height: 70%;width: 90%;top: 0;left: 0;border-radius:50%;margin: auto;bottom: 0;right: 0;"/>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div style="position:relative;display:block;width:100%;font-size:18px;border-radius:10px;text-align:left;height:20%;background-color:white;color:black;padding:10px;">
+          {{pageData.message}}
+        </div>
+        <ion-row style="height:10%;margin-top:4%;">
+          <ion-col style="height:100%;">
+              <img *ngIf="pageData.prayerimages && pageData.prayerimages[0] && pageData.prayerimages[0].image"
+              [src]="pageData.prayerimages[0].image" style="height:100%;border-radius:10px;"/>
+          </ion-col>
+          <ion-col style="height:100%;">
+              <img *ngIf="pageData.prayerimages && pageData.prayerimages[1] && pageData.prayerimages[1].image"
+               [src]="pageData.prayerimages[1].image" style="height:100%;border-radius:10px;"/>
+          </ion-col>
+          <ion-col style="height:100%;">
+              <img *ngIf="pageData.prayerimages && pageData.prayerimages[2] && pageData.prayerimages[2].image"
+              [src]="pageData.prayerimages[2].image" style="height:100%;border-radius:10px;"/>
+          </ion-col>
+        </ion-row>
+        <ion-row style="position:relative;margin-top:25%;">
+          <ion-col *ngIf="i == 0">
+
+          </ion-col>
+          <ion-col style="text-align:center;padding-top:10%;">
+              <img src="assets/images/greenarrow.jpg" *ngIf="cards.length-1 != i" style="width:70%;margin-left:10%;"/>
+              <b *ngIf="cards.length-1 != i">Next</b>
+          </ion-col>
+          <ion-col *ngIf="i != 0 && cards.length-1 != i">
+          </ion-col>
+          <ion-col style="text-align:center;padding-top:10%;">
+              <img src="assets/images/leftgreen.png" *ngIf="i != 0" style="width:70%;margin-left:10%;"/>
+              <b *ngIf="i != 0">Previous</b>
+          </ion-col>
+          <ion-col *ngIf="cards.length-1 == i">
+          </ion-col>
+        </ion-row>
+      </ion-slide>
+    </ion-slides>
+  <!--/div-->
+</ion-content>
+
+<ion-footer style="height:50px;">
+  <button ion-button full style="background-color:white;margin:0;height:100%;"  tappable (click)='sendToHomeScreen();'>
+    <ion-icon ios="ios-home" md="md-home" style="color:red;padding-right:10px;font-size:30px;"></ion-icon>
+    <span style="color:red;font-size:20px;text-transform: capitalize;"><b>Home</b></span>
+  </button>
+</ion-footer>

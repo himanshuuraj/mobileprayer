@@ -1,0 +1,63 @@
+<!--
+  Generated template for the Invitation page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>
+    <div class="header" *ngIf="invitationArray.length > 0">
+      <b>New Invitations</b>
+    </div>
+    <ion-list style="margin-bottom:0px;">
+      <ion-item
+      *ngFor="let invitation of invitationArray;let i=index" [attr.data-index]="i"
+      (swipeLeft)="swipeLeft(i);" (swipeRight)="swipeRight(i);" tappable (click)="swipeRight(i);" style="border-bottom:1px solid #dcdcdc;width:80%;margin-left:10%;">
+        <ion-item item-left id="left{{i}}"  style="margin:0;max-width:20%;">
+          <img src="assets/images/leftarrow.jpg" style="margin-top:55px;"/>
+        </ion-item>
+        <ion-thumbnail item-left style="margin:0;padding:10px;">
+          <img *ngIf="invitation.url" [src]="invitation.url" style="border-radius:50%;height:60px;"/>
+        </ion-thumbnail>
+        <ion-item item-left style="padding-left:0px;margin:0;width:160%;">
+          <h2>{{invitation.firstname}}</h2>
+          <p>{{invitation.phonenumber.toString().split(",")[0]}}</p>
+        </ion-item>
+        <ion-item item-left id="right{{i}}"  style="margin:0;max-width:20%;">
+          <img src="assets/images/greenarrow.jpg" style="margin-top:55px;"/>
+        </ion-item>
+      </ion-item>
+    </ion-list>
+    <p style="text-align:center;font-size:18px;"><b>My Prayer Circle</b></p>
+    <ion-list style="margin-bottom:50px;">
+      <ion-item no-lines  *ngFor="let friend of friends" style="border-bottom:1px solid #dcdcdc;width: 80%;margin-left: 10%; height:80px">
+        <ion-thumbnail no-lines item-left style="min-width:70px;">
+          <img [src]="friend.url || 'https://s3-us-west-1.amazonaws.com/pp-cpp/ananymous/default.png'"
+          style="border-radius:50%;height:60px;margin-top:6px"/>
+        </ion-thumbnail>
+        <ion-item no-lines item-left style="padding-left:0px;width:800%;">
+          <h2>{{friend.name}}</h2>
+          <p>{{friend.phonenumber.toString().split(",")[0]}}</p>
+        </ion-item>
+      </ion-item>
+    </ion-list>
+    <p style="text-align:center;font-size:18px;" *ngIf="fofriends && fofriends.length > 0"><b>Friends of Friends</b></p>
+    <ion-list style="margin-bottom:50px;">
+      <ion-item no-lines  *ngFor="let friend of fofriends" style="border-bottom:1px solid #dcdcdc;width: 80%;margin-left: 10%; height:80px">
+        <!--<ion-item item-left style="min-width:20%;"></ion-item>-->
+        <ion-thumbnail no-lines item-left style="min-width:70px;">
+          <img [src]="friend.url || 'https://s3-us-west-1.amazonaws.com/pp-cpp/ananymous/default.png'"
+          style="border-radius:50%;height:60px;margin-top:6px"/>
+        </ion-thumbnail>
+        <ion-item no-lines item-left style="padding-left:0px;width:800%;">
+          <h2>{{friend.name}}</h2>
+          <p>{{friend.phonenumber.toString().split(",")[0]}}</p>
+        </ion-item>
+      </ion-item>
+    </ion-list>
+</ion-content>
+<ion-footer style="height:50px;">
+  <button ion-button full style="background-color:white;margin:0;height:100%;"  tappable (click)='sendToHomeScreen();'>
+    <ion-icon ios="ios-home" md="md-home" style="color:red;padding-right:10px;font-size:30px;"></ion-icon>
+    <span style="color:red;font-size:20px;text-transform: capitalize;"><b>Home</b></span>
+  </button>
+</ion-footer>

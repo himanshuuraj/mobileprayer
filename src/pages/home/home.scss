@@ -1,4 +1,9 @@
 page-home {
+
+  ion-content * {
+    font-family: aleo;
+  }
+
   .title{
     position:relative;
     display:block;
@@ -26,9 +31,14 @@ page-home {
   .checkbox-ios .checkbox-icon{
     border-radius:20%;
   }
-  .checkbox-ios .checkbox-checked{
-    background-color:orange;
+  .checkbox-ios .checkbox-md .checkbox-checked{
+    background-color:#f53d3d;
   }
+
+  .checkbox-ios .checkbox-checked{
+       background-color:#f53d3d;
+  }
+
   .imageDiv{
     position:absolute;
     width:150px;
@@ -36,7 +46,7 @@ page-home {
     left:0;
     right:0;
     height:100%;
-    background-color:gray;
+    background-color:#f53d3d;
     border-radius:100%;
     min-height:150px;
     text-align: center;
@@ -44,15 +54,94 @@ page-home {
   #modalElement{
     position: fixed;
     width: 90%;
-    height: auto;
-    top: 3%;
+    height:400px;
+    top: 10%;
     left: 5%;
     border-radius: 5px;
-    max-height: 90%;
-    overflow: auto;
+    max-height: 80%;
     background-color: white;
   }
   ion-input > input{
     text-align:center;
   }
+  #modalCover{
+    height:100%;
+    position:fixed;
+    left:0px;
+    width:100%;
+    background-color: gray;
+    opacity: 0.2;
+    top:0px;
+    height: 100%;
+  }
+
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    height:80%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius:20px;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.closeModal{
+    float: right;
+    height: 50px;
+    width: 75px;
+    background-color: #f53d3d;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+ .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
+     border-bottom-color: #f53d3d;
+     box-shadow: #f53d3d 0px -1px 0px 0px inset;
+  }
+
+input{
+  color:black;
+}
+
+.list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):last-child {
+    border-bottom-color: #f53d3d;
+    box-shadow: inset 0 -1px 0 0 #f53d3d;
+}
+.checkbox-md .checkbox-checked {
+    border-color: red;
+    background-color: red;
+}
+
 }

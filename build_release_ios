@@ -1,0 +1,8 @@
+set -x
+ionic cordova plugin add cordova-plugin-camera
+npm install --save @ionic-native/camera
+ionic cordova plugin add cordova-plugin-inapppurchase
+npm install --save @ionic-native/in-app-purchase
+ionic cordova build ios
+ionic cordova emulate ios -lc
+

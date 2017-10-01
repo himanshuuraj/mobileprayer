@@ -1,0 +1,17 @@
+page-request-waiting {
+  ion-content * {
+      font-family: aleo;
+    }
+    .ionCol{
+      position:relative;
+      min-width:70px;
+      height:100%;
+    }
+    .scroll-content{
+      margin-bottom:50px;
+    }
+    textarea.text-input {
+      display: block;
+      height:180px;
+    }
+}

@@ -1,0 +1,162 @@
+<ion-content *ngIf="page == 'one'" padding>
+  <ion-grid>
+
+    <ion-row style="height:33%; margin-bottom:5%">
+      <ion-col tappable (click)="moveToDailyinspiration();">
+          <div class="icons">
+            <div class="roundedDiv" style="position: relative;">
+              <span *ngIf="dailyInspirationCount" class="iconNotification">{{dailyInspirationCount}}
+              </span>
+                <img src="assets/images/dailyInspiration.png"/>
+            </div>
+            <div class="name" style="position: relative;">
+                <p>Daily Inspiration</p>
+            </div>
+          </div>
+      </ion-col>
+      <ion-col tappable (click)="moveToPrayerRequest();">
+          <div class="icons">
+            <div class="roundedDiv" style="position: relative;">
+                <img src="assets/images/prayerRequest.png"/>
+            </div>
+            <div class="name" style="position: relative;">
+                <p>Create My Prayer Request</p>
+            </div>
+          </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="height:33%; margin-bottom:5%">
+      <ion-col tappable (click)="moveToWhoIsPraying();">
+          <div class="icons">
+            <div class="roundedDiv" style="position: relative;">
+                <span *ngIf="prayingWithMeCount" class="iconNotification">{{prayingWithMeCount}}
+                </span>
+                <img src="assets/images/whoPrayingWithMe.png" style="margin-top:0%;"/>
+            </div>
+            <div class="name" style="position: relative;">
+                <p>Who's Praying with me</p>
+            </div>
+          </div>
+      </ion-col>
+      <ion-col tappable (click)="moveToTestPage();">
+          <div class="icons">
+            <div class="roundedDiv" style="position: relative;">
+                <span *ngIf="receivedprayerrequestsCount" class="iconNotification">
+                  {{receivedprayerrequestsCount}}
+                </span>
+                <img src="assets/images/prayerRequestsWaiting.png"/>
+            </div>
+            <div class="name" style="position: relative;">
+                <p>Prayer Request Waiting</p>
+            </div>
+          </div>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row style="height:33%;">
+      <ion-col>
+        <div class="icons" *ngIf="!isDeviceTypeIOS" tappable (click)="moveToTithe();">
+            <div class="roundedDiv" style="position: relative;">
+                <img src="assets/images/titheToMyChurch.png"/>
+            </div>
+            <div class="name" style="position: relative;">
+                <p>Tithe to my Church</p>
+            </div>
+        </div>
+      </ion-col>
+      <ion-col tappable (click)="moveToInvitation();">
+        <div class="icons">
+            <div class="roundedDiv" style="position: relative;">
+              <span *ngIf="prayerCircleInvitationCount" class="iconNotification">{{prayerCircleInvitationCount}}
+              </span>
+               <img src="assets/images/myPrayerCircle.png"/>
+            </div>
+            <div class="name" style="position: relative;">
+                <p>My Prayer Circle</p>
+            </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+  <div id="modal" *ngIf="modalFlag" style="display:block;position:fixed;top:0;left:0;height:100%;width:100%;">
+    <div class="modal"  style="display:block;">
+      <p style="margin: 20px;text-align: center;margin-top: 21%;">
+        <span>{{modalMessage}}</span>
+      </p>
+
+      <p style="text-align:center;color: #ee2f24;" tappable (click)="showPageTwo();"><u>Choose My Subscription</u></p>
+      <img src="assets/images/cross.png" style="position:absolute;right: -8px;top: -5px;width: 20px;" tappable (click)="closeModal();" *ngIf="showCancelButton"/>
+    </div>
+  </div>
+</ion-content>
+<ion-content *ngIf="page == 'two'">
+  <ion-grid style="height:70%;">
+    <ion-row style="margin-bottom:20%;">
+      <ion-col style="font-size:20px;text-align:center;">
+        <b><span *ngIf="!showHeading">To tithe to your church</span><br> Please choose a subscription option</b>
+      </ion-col>
+    </ion-row>
+    <ion-row tappable (click)="subscription(0)" style="height: 70px;font-size: 24px;padding-left: 10px;margin-bottom:8%;border-bottom :1px solid #DCDCDC;width: 85%;margin-left: 10%;">
+      <ion-col style="text-align:center;">
+        3 Months
+        <span style="color:red;">
+          $4.99/<span style="font-size:24px;">month</span>
+        </span>
+      </ion-col>
+    </ion-row>
+    <ion-row tappable (click)="subscription(1)" style="height: 70px;font-size: 24px;padding-left: 10px;margin-bottom:8%;border-bottom :1px solid #DCDCDC;width: 85%;margin-left: 10%;">
+      <ion-col style="text-align:center;">
+        6 Months
+        <span style="color:orange;">
+          $3.99/<span style="font-size:24px;">month</span>
+        </span>
+      </ion-col>
+    </ion-row>
+    <ion-row tappable (click)="subscription(2)" style="height: 70px;font-size: 24px;padding-left: 10px;margin-bottom:8%;border-bottom :1px solid #DCDCDC;width: 85%;margin-left: 10%;">
+      <ion-col style="text-align:center;">
+        12 Months
+        <span style="color:green;">
+          $2.99/<span style="font-size:24px;">month</span>
+        </span>
+        <br>
+        <span style="font-size:16px;">
+          <i>Most Popular Choice!</i>
+        </span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div>
+    <div style="display:block;margin-left:10%;height: 80%;width:80%;font-size: 18px;">
+      By subscribing to Christian Prayer Power you will receive continued access to all application functionality, receive a new Daily Inspiration every 24 hours, and receive new images and scripture
+      texts that are displayed every time you send out a Prayer Request or respond to someone else's Prayer Request with a personal message.
+    </div>
+  </div>
+<div style="margin-top:40px;" *ngIf="page == 'two' && isDeviceTypeIOS">
+  <div style="display:block;margin-left:10%;height: 80%;width:80%;font-size: 14px;">
+    <li> Payment will be charged to iTunes Account at confirmation of purchase</li>
+    <li> Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period</li>
+    <li> Account will be charged for renewal within 24-hours prior to the end of the current period, and identify the cost of the renewal</li>
+    <li> Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase</li>
+     <li> Privacy Policy:<u><a href="https://cprayerpower.com/privacy-policy">  https://cprayerpower.com/privacy-policy</a></u></li>
+     <li>Terms of Use: <u><a href="https://cprayerpower.com/terms-and-conditions">https://cprayerpower.com/terms-and-conditions</a></u></li>
+      <li> Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable</li>
+  </div>
+</div>
+</ion-content>
+
+<ion-footer style="height:50px;" *ngIf="page=='one'">
+      <button ion-button full style="background-color:white;margin:0;height:100%;"  tappable (click)='moveToProfile();'>
+        <img src="assets/images/man-user.png" style="height: 60%;padding-right: 5px;"/>
+        <span style="color:red;font-size:20px;text-transform: capitalize;"><b>My Profile</b></span>
+      </button>
+</ion-footer>
+
+<ion-footer style="height:50px;" *ngIf="page=='two'">
+      <button ion-button full style="background-color:white;margin:0;height:100%;"  tappable (click)='showPageOne();'>
+        <img src="assets/images/man-user.png" style="height: 60%;padding-right: 5px;"/>
+        <span style="color:red;font-size:20px;text-transform: capitalize;"><b>Home</b></span>
+      </button>
+</ion-footer>

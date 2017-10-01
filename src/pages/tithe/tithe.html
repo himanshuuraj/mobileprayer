@@ -1,0 +1,101 @@
+<!--
+  Generated template for the Tithe page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-content padding>
+
+  <ion-grid *ngIf="page=='first'" style="height:100%;">
+    <ion-row>
+      <ion-col style="font-size:20px;text-align:center;">
+        <b>Tithe to My Church</b>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin-top:10%;">
+      <ion-col style="font-size:16px;text-align:center;color:red;">
+        <span *ngIf='churchNumber'>No church exist for this zip code</span>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin-top:40%;">
+      <ion-col>
+        <ion-input placeholder="Please Enter Your Church’s\n 5-digit ZIP code" [(ngModel)]="zipcode" type="tel"
+        style="font-size:14px;border-bottom:1px solid #DCDCDC;width:80%;margin-left:10%;text-align:center;"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin-top:10%;">
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <button ion-button full tappable (click)="getChurchData();">Done</button>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="page=='second'" style="height:100%;">
+    <ion-row>
+      <ion-col style="font-size:20px;text-align:center;">
+        <b>Tithe to My Church</b>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="font-size:18px;text-align:center;color:red;margin-top:50%;">
+        <span>You are now tithing to </span><br>
+        <span style="font-size:150%">{{selectedChurch.biz_name}}</span>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin-top:20%;">
+    <!--  <ion-col>
+        <ion-input placeholder="Please enter your phone number" [(ngModel)]="phoneNumber" type="text"
+        style="font-size:14px;border-bottom:1px solid #DCDCDC;width:80%;margin-left:10%;text-align:center;"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>-->
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <button ion-button full tappable (click)="editTithing();">Edit</button>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="page == 'fourth'" style="height:100%;">
+    <ion-row>
+      <ion-col style="max-width:50px;margin-top: -5px;" tappable (click)="moveBack();">
+        <img src="assets/images/leftback.png" style="height:30px;width:100%;"/>
+      </ion-col>
+      <ion-col style="text-align:center;font-size:18px;">
+        <b>Choose Your Church</b>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+    <ion-scroll style="width:100%;height:80vh" scrollY="true">
+    <ion-list style="margin-top:5px;">
+      <ion-item *ngFor="let church of churchDataArray" style="border-bottom: none;">
+        <ion-checkbox item-left tappable (click)="removeChurch(church);" style="margin-right: 10px;">
+        </ion-checkbox>
+        <ion-item item-left style="padding-left:0px;color:#ee2f24;">
+          {{church.biz_name}}
+        </ion-item>
+      </ion-item>
+    </ion-list>
+    </ion-scroll>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>
+<ion-footer style="height:50px;">
+    <button ion-button full style="background-color:white;margin:0;height:100%;"  tappable (click)='sendToHomeScreen();'>
+      <ion-icon ios="ios-home" md="md-home" style="color:red;padding-right:10px;font-size:30px;"></ion-icon>
+      <span style="text-transform:capitalize;color:red;font-size:20px;">
+        <b>Home</b>
+      </span>
+    </button>
+</ion-footer>

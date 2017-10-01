@@ -1,0 +1,145 @@
+<!--
+  Generated template for the RequestWaiting page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content padding class="has-footer" id="second" *ngIf="showEdit" style="position:fixed;left:0;top:0;">
+  <div
+  style="position:relative;display:block;padding:5px;margin-left:5px;margin-right:5px;font-size:20px;text-align:center;">
+    <b>You have <br>{{noOfRequest}} Prayer Requests Waiting</b>
+  </div>
+  <ion-grid *ngIf="noOfRequest" style="height:15%;">
+    <ion-row style="height:100%;">
+      <ion-col style="height:100%;max-width: 20%;">
+        <img [src]="pageData.url"
+        style="position: absolute;height: 70%;width: 90%;top: 0;left: 0;border-radius:50%;margin: auto;bottom: 0;right: 0;"/>
+      </ion-col>
+      <ion-col style="font-size:22px;padding-top:8%;">
+        <b>{{pageData.firstname}} {{pageData.lastname}}</b>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div *ngIf="noOfRequest" style="position:relative;display:block;width:100%;border-radius:10px;height:20%;background-color:white;color:black;padding:10px;">
+    {{pageData.prayermessage}}
+  </div>
+  <ion-row style="height:10%;margin-top:4%;">
+    <ion-col style="height:100%;">
+        <img *ngIf="pageData.prayerimages && pageData.prayerimages[0] && pageData.prayerimages[0].image"
+        [src]="pageData.prayerimages[0].image" style="height:100%;border-radius:10px;"/>
+    </ion-col>
+    <ion-col style="height:100%;">
+        <img *ngIf="pageData.prayerimages && pageData.prayerimages[1] && pageData.prayerimages[1].image"
+         [src]="pageData.prayerimages[1].image" style="height:100%;border-radius:10px;"/>
+    </ion-col>
+    <ion-col style="height:100%;">
+        <img *ngIf="pageData.prayerimages && pageData.prayerimages[2] && pageData.prayerimages[2].image"
+        [src]="pageData.prayerimages[2].image" style="height:100%;border-radius:10px;"/>
+    </ion-col>
+  </ion-row>
+  <div *ngIf="!prayermessage && showEdit && noOfRequest" tappable (click)="showKeyBoard();"
+   style="position:relative;display:block;height:20%;padding:5px;font-size:18px;margin-top:10%;border:1px solid #ec918c;border-radius:10px;">
+    <img src="assets/images/edit.png" style="position:absolute;width:40%;left:0;right:0;top:0;bottom:0;margin:auto;"/>
+  </div>
+  <div *ngIf="prayermessage && showEdit && !noOfRequest" tappable (click)="showEdit=false;"
+      style="position:relative;display:block;height:20%;overflow:hidden;padding:5px;font-size:18px;margin-top:10%;border:1px solid #ec918c;border-radius:10px;">
+      {{prayermessage}}
+  </div>
+  <ion-row *ngIf="noOfRequest" style="position:relative;margin-top:10%;">
+    <ion-col tappable (click)="leftClick();" style="text-align:center;">
+        <img src="assets/images/leftarrow.jpg" style="width:100%;"/>
+        <b>Decline</b>
+    </ion-col>
+    <ion-col>
+    </ion-col>
+    <ion-col tappable (click)="rightClick();" style="text-align:center;">
+        <img src="assets/images/greenarrow.jpg" style="width:100%;"/>
+        <b>Accept</b>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+<ion-content padding class="has-footer" id="first" *ngIf="showEdit" style="position:fixed;left:0;top:0;">
+  <div
+  style="position:relative;display:block;padding:5px;margin-left:5px;margin-right:5px;font-size:20px;text-align:center;">
+
+    <b>You have <br>{{noOfRequest}} Prayer Requests Waiting</b>
+  </div>
+  <ion-grid *ngIf="noOfRequest" style="height:15%;">
+    <ion-row style="height:100%;">
+      <ion-col style="height:100%;max-width: 20%;">
+        <img [src]="pageData.url"
+        style="position: absolute;height: 70%;width: 90%;top: 0;left: 0;border-radius:50%;margin: auto;bottom: 0;right: 0;"/>
+      </ion-col>
+      <ion-col style="font-size:22px;padding-top:8%;">
+        <b>{{pageData.firstname}} {{pageData.lastname}}</b>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div *ngIf="noOfRequest" style="position:relative;display:block;width:100%;border-radius:10px;height:20%;background-color:white;color:black;padding:10px;">
+    {{pageData.prayermessage}}
+  </div>
+  <ion-row style="height:10%;margin-top:4%;">
+    <ion-col style="height:100%;">
+        <img *ngIf="pageData.prayerimages && pageData.prayerimages[0] && pageData.prayerimages[0].image"
+        [src]="pageData.prayerimages[0].image" style="height:100%;border-radius:10px;"/>
+    </ion-col>
+    <ion-col style="height:100%;">
+        <img *ngIf="pageData.prayerimages && pageData.prayerimages[1] && pageData.prayerimages[1].image"
+         [src]="pageData.prayerimages[1].image" style="height:100%;border-radius:10px;"/>
+    </ion-col>
+    <ion-col style="height:100%;">
+        <img *ngIf="pageData.prayerimages && pageData.prayerimages[2] && pageData.prayerimages[2].image"
+        [src]="pageData.prayerimages[2].image" style="height:100%;border-radius:10px;"/>
+    </ion-col>
+  </ion-row>
+  <div *ngIf="!prayermessage && showEdit && noOfRequest" tappable (click)="showKeyBoard();"
+   style="position:relative;display:block;height:20%;padding:5px;font-size:18px;margin-top:10%;border:1px solid #ec918c;border-radius:10px;">
+    <img src="assets/images/edit.png" style="position:absolute;height:40%;left:0;right:0;top:0;bottom:0;margin:auto;"/>
+  </div>
+  <div *ngIf="prayermessage && showEdit && noOfRequest" tappable (click)="showEdit=false;"
+      style="position:relative;display:block;height:20%;overflow:hidden;padding:5px;font-size:18px;margin-top:10%;border:1px solid #ec918c;border-radius:10px;">
+      {{prayermessage}}
+  </div>
+  <ion-row *ngIf="noOfRequest" style="position:relative;">
+    <ion-col (swipe)="leftClick();" style="text-align:center;padding-top:10%;">
+        <img src="assets/images/leftarrow.jpg" style="width:100%;"/>
+        <b>Decline</b>
+    </ion-col>
+    <ion-col>
+    </ion-col>
+    <ion-col (swipe)="rightClick();" style="text-align:center;padding-top:10%;">
+        <img src="assets/images/greenarrow.jpg" style="width:100%;"/>
+        <b>Accept</b>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+<ion-content padding *ngIf="!showEdit && noOfRequest">
+  <ion-grid>
+    <ion-row style="margin: 0;margin-top: 4%;min-height:200px;">
+      <ion-col style="height:100%;">
+        <ion-textarea maxlength="300" [(ngModel)]="prayermessage" autofocus="autofocus"
+        style="width:100%;min-height:200px;resize:none;border:1px solid red;border-radius:20px;padding-top:15px;">
+
+        </ion-textarea>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin: 0;margin-top: 4%;height:50px;">
+      <ion-col style="height:100%;">
+        <button ion-button full style="background-color: red;color: white;width: 60%; margin-left: 20%;border-radius: 10px;height: 50px;"
+          tappable (click)='doneButton();'>
+          <span style="color:white;font-size:20px;text-transform: capitalize;z-index:99;"><b>Done</b></span>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer style="height:50px;" *ngIf="showEdit">
+  <button ion-button full style="background-color:white;margin:0;height:100%;"  tappable (click)='sendToHomeScreen();'>
+    <ion-icon ios="ios-home" md="md-home" style="color:red;padding-right:10px;font-size:30px;"></ion-icon>
+    <span style="color:red;font-size:20px;text-transform: capitalize;"><b>Home</b></span>
+  </button>
+</ion-footer>

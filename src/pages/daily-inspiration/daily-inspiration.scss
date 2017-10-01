@@ -1,0 +1,53 @@
+page-daily-inspiration {
+  #animpart1, #animpart2 {
+  	position: absolute;
+  	display: none;
+  }
+
+  #animpart2{
+    position: absolute;
+    display: none;
+    height: 400px;
+    left: 10%;
+    margin: auto;
+    bottom: 0;
+    font-size: 31px;
+    width: 80%;
+    text-align: center;
+    	color: #ee2f24;
+  }
+
+  div.container6 {
+  	height: 10em;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center
+  }
+
+  img {
+  	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+  	-ms-transform: translate(-50%, -50%);
+  }
+
+  .text {
+  	color: #ee2f24;
+  	font-size: 25pt;
+  	font-variant: small-caps;
+  	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+  	-ms-transform: translate(-50%, -50%);
+  	color: #ee2f24;
+  	font-family: Aleo, "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond,
+  		Times, serif;
+  	letter-spacing: 0.1em;
+  	text-align: center;
+  	margin: 40px auto;
+  	text-transform: lowercase;
+  	line-height: 100%;
+  }
+}

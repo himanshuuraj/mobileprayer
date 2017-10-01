@@ -1,0 +1,142 @@
+<ion-content padding id="second" style="padding-bottom:50px;" *ngIf="showEdit">
+  <ion-grid style="height:100%;">
+    <ion-row style="height:33%;">
+      <ion-col>
+        <div class="icons">
+          <div class="roundedDiv"></div>
+          <img src="assets/images/dailyInspiration.png" class="imagesIcon"/>
+        </div>
+        <div class="name">
+          Daily Inspiration
+        </div>
+      </ion-col>
+      <ion-col tappable (click)="moveToPrayerRequest();">
+        <div class="icons">
+          <div class="roundedDiv"></div>
+          <img src="assets/images/prayerRequest.png" class="imagesIcon"/>
+        </div>
+        <div class="name">
+          Create My Prayer Request
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="height:33%;">
+      <ion-col>
+        <div class="icons">
+          <div class="roundedDiv"></div>
+          <img src="assets/images/whoPrayingWithMe.png" class="imagesIcon"/>
+        </div>
+        <div class="name">
+          Who's Praying with me
+        </div>
+      </ion-col>
+      <ion-col tappable (click)="moveToRequestWaiting();">
+        <div class="icons">
+          <div class="roundedDiv"></div>
+          <img src="assets/images/prayerRequestsWaiting.png" class="imagesIcon"/>
+        </div>
+        <div class="name">
+          Prayer Requests Waiting
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="height:33%;">
+      <ion-col>
+        <div class="icons">
+          <div class="roundedDiv"></div>
+          <img src="assets/images/titheToMyChurch.png" class="imagesIcon"/>
+        </div>
+        <div class="name">
+          Tithe to my Church
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="icons">
+          <div class="roundedDiv"></div>
+          <img src="assets/images/myPrayerCircle.png" class="imagesIcon"/>
+        </div>
+        <div class="name">
+          My Prayer Circle
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-content padding *ngIf="!showEdit">
+  <ion-grid>
+    <ion-row style="position:relative;min-height:200px;">
+  <ion-textarea maxlength="300" [(ngModel)]="prayermessage" autofocus
+  style="width:100%;height:100%;min-height:200px;resize:none;font-size:16px;border:1px solid red;border-radius:20px;padding-top:15px;">
+  </ion-textarea>
+  </ion-row>
+    <ion-row>
+      <button ion-button full style="margin: 0;margin-top: 4%;background-color: red;color: white;width: 60%; margin-left: 20%;border-radius: 10px;height: 50px;"  tappable (click)='doneButton();'>
+        <span style="color:white;font-size:20px;text-transform: capitalize;z-index:99;"><b>Done</b></span>
+      </button>
+    </ion-row>
+</ion-grid>
+</ion-content>
+<ion-content padding id="first" *ngIf="showEdit" style="background-color:red;position:fixed;left:0;top:0;z-index:1;">
+    <div style="position:relative;display:block;padding:5px;margin-left:5px;margin-right:5px;font-size:20px;text-align:center;">
+      <b>Create My Prayer Request</b>
+    </div>
+    <div *ngIf="!prayermessage" style="position:relative;display:block;height:40%;padding:10px;font-size:18px;border: 2px solid #ee2f24;margin-top:4%;border-radius: 10px;"
+          tappable (click)="showKeyBoard();">
+      <img src="assets/images/edit.png" style="position: absolute;left: 0;right: 0;margin: auto;height:25%;top:0;bottom:0;"/>
+    </div>
+    <div *ngIf="prayermessage" tappable (click)="showEdit=false;" style="overflow:auto;width:100%;height:35%;border:1px solid red;font-size:16px;border-radius:20px;padding:15px;">
+        {{prayermessage}}
+    </div>
+    <div style="width:100%;height:10%;text-align:center;margin-top:5%;">
+        <ion-row style="height:100%;width:100%;" *ngIf="flagToShowIcons.flagToShowPhotoDiv" tappable (click)="addPhoto();">
+          <ion-col style="height:100%;">
+            <img src="assets/images/addPhoto.png" style="height:100%;float:right;"/>
+          </ion-col>
+          <ion-col style="height:100%;text-align:left;font-size:16px;padding-top:18px;">
+            <b>Add Photo</b>
+          </ion-col>
+        </ion-row>
+    </div>
+    <ion-row style="height:10%;margin-top:2%;" *ngIf="flagToShowIcons.mainDiv">
+      <ion-col class="ionCol">
+        <button class="buttonImage" *ngIf="flagToShowIcons.firstDiv" tappable (click)="showCross('first');">
+          <img *ngIf="images.firstImage" [src]="images.firstImage" style="height:100%;width:100%;"/>
+        </button>
+        <a class="cross" *ngIf="flagToShowIcons.firstCross" tappable (click)="removeImage('first');">
+          <img src="assets/images/cross.png" class="innerDiv"/><!--<div class="innerDiv"><span class="x">X</span></div>-->
+        </a>
+      </ion-col>
+      <ion-col class="ionCol">
+        <button class="buttonImage" *ngIf="flagToShowIcons.secondDiv" tappable (click)="showCross('second');">
+          <img *ngIf="images.secondImage" [src]="images.secondImage" style="height:100%;width:100%;"/>
+        </button>
+        <a class="cross" *ngIf="flagToShowIcons.secondCross" tappable (click)="removeImage('second');">
+          <img src="assets/images/cross.png" class="innerDiv"/>
+        </a>
+      </ion-col>
+      <ion-col class="ionCol">
+        <button class="buttonImage" *ngIf="flagToShowIcons.thirdDiv" tappable (click)="showCross('third');">
+          <img *ngIf="images.thirdImage" [src]="images.thirdImage" style="height:100%;width:100%;"/>
+        </button>
+        <a class="cross" *ngIf="flagToShowIcons.thirdCross" tappable (click)="removeImage('third');">
+            <img src="assets/images/cross.png" class="innerDiv"/>
+        </a>
+      </ion-col>
+    </ion-row>
+    <div style="position: absolute;bottom: 50px;width: 100%;text-align: center;height: 8%;margin-top: 8%;"
+    (swipe)="createPrayerRequest()"><!-- tappable (click)="createPrayerRequest()"-->
+      <img src="assets/images/rightarrow.jpg" style="height:50%;"/>
+      <div style="width:100%;text-align:center;font-size: 18px;color:black;">
+        <b>Swipe to Send</b>
+      </div>
+    </div>
+</ion-content>
+<ion-footer style="height:50px;" *ngIf="showEdit">
+  <button full ion-button style="background-color:white;margin:0;height:100%;"  tappable (click)='sendToHomeScreen();'>
+    <ion-icon ios="ios-home" md="md-home" style="color:red;padding-right:10px;font-size:30px;"></ion-icon>
+    <span style="color:red;font-size:20px;text-transform: capitalize;"><b>Home</b></span>
+  </button>
+</ion-footer>

@@ -8,106 +8,92 @@
 
 
 
-<ion-content padding>
+<ion-content padding  *ngIf="pageNumber == 'first'">
   <ion-grid>
     <ion-row style="position:relative;min-height:150px;height:auto;">
-      <div class="imageDiv" (click)="getImageFromGallery();">
-        <span *ngIf="!imageUploadFlag" style="display:block;margin-top: 60px;font-size: 16px;">Upload <br> Photo</span>
-         <img *ngIf="imageUploadFlag" [src]="base64Image" style="width:100%;height:100%;"/>
+      <div class="imageDiv" id="imageDiv" tappable (click)="getImageFromGallery();">
+        <span id="spanUploadPhoto" *ngIf="!base64Image" style="display:block;margin-top: 60px;font-size: 18px; color:white">Upload <br> Photo</span>
+        <img *ngIf="base64Image" [src]="base64Image"  style="width:100%;height:100%;border-radius:100%;"/>
       </div>
-    </ion-row>
-    <ion-row>
-      <ion-col text-center style="font-size:18px;">
-        <b>Christian Prayer Power</b>
-      </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
         <ion-list>
           <ion-item style="border-top:none;padding-left:0px;">
             <ion-label floating text-center>First Name</ion-label>
-            <ion-input [(ngModel)]="firstName" id="firstName"></ion-input>
+            <ion-input [(ngModel)]=firstName id="firstName"></ion-input>
           </ion-item>
           <ion-item style="padding-left:0px;">
             <ion-label floating text-center>Last Name</ion-label>
-            <ion-input [(ngModel)]="lastName" id="lastName"></ion-input>
+            <ion-input [(ngModel)]=lastName id="lastName"></ion-input>
           </ion-item>
           <ion-item style="border-top:none;padding-left:0px;">
             <ion-label floating text-center>Phone Number</ion-label>
-            <ion-input [(ngModel)]="phoneNumber" id="phoneNumber"></ion-input>
-          </ion-item>
-          <ion-item style="border-top:none;padding-left:0px;">
-            <ion-label floating text-center>Re-enter the phone number</ion-label>
-            <ion-input [(ngModel)]="reEnteredPhoneNumber"></ion-input>
+            <ion-input [disabled]="flagToEdit || firstTimeAccount" [(ngModel)]=phoneNumber type="tel" id="phoneNumber"></ion-input>
           </ion-item>
         </ion-list>
       </ion-col>
     </ion-row>
-    <ion-row>
+      <ion-row style="margin:auto;" *ngIf="flagToEdit == 0">
       <ion-col col-1>
-        <ion-checkbox style="float:right;border-radius:20%;" id="termsAndConditionsAcceptance">
+        <ion-checkbox style="float:right;border-radius:20%;" [(ngModel)]="checkStatus" id="termsAndConditionsAcceptance">
         </ion-checkbox>
       </ion-col>
       <ion-col style="font-size:15px;">
-        I accept the <span style="color:red;" (click)="showModal();">terms and conditions</span>
+        I accept the <span style="color:red;" tappable (click)="showModal();">terms and conditions</span>
       </ion-col>
     </ion-row>
     <ion-row>
-      <button (click)="sendData()" ion-button full color="danger">Create My Profile</button>
+      <button tappable (click)="makejson()" ion-button full color="danger">
+        <span *ngIf="flagToEdit == 0" style="text-transform:capitalize;">Create My Profile</span>
+        <span *ngIf="flagToEdit == 1" style="text-transform:capitalize;">Update</span>
+      </button>
     </ion-row>
   </ion-grid>
-  <div id="modalElement" style="display:none;">
-
-    You are responsible for reading and accepting the following Terms and Conditions in order to use the services provided by the application.
-    The contents, logo, trademark, other visual media, patents and intellectual property created Christian Prayer Power Inc. and utilized by the smartphone application and its associated computer systems and servers is the sole property of Christian Prayer Power Inc. and is protected by copyright laws. Nothing in the Terms of Use grants you a right or license to use any trademark, design, logo, or any other property owned by Christian Prayer Power Inc.
-    Your use of this application and access to any personal data thereby created may be terminated at any time by Christian Prayer Power Inc. in the event that you violate our Terms of Use and/or the laws of the State or Country in which you reside. The company is not obliged to notify you of such termination but may do so at its discretion.
-    Use of this application is governed by the applicable laws of the State of California and by such Federal regulations and laws as may be applicable as well as by the laws of the State and Country in which you use the application.
-    The application is designed to permit the user to send prayer requests to his/her designated prayer circle contacts and for such contacts to respond with personal messages of their own. Such content is governed by your rights and by accepting these Terms and Conditions you irrevocably assign to Christian Prayer Power Inc. a perpetual license to share such content with other users of the application in a manner consistent with the user-defined prayer circles aforementioned.
-    If any user created content is found to violate copyright infringement rules, Christian Prayer Power Inc. will respond to any DMCA takedown notices received and will thus remove any content deemed to violate third party copyright.
-    As a condition of use you promise not to use the services provided for any purpose that is unlawful or prohibited by these Terms and Conditions or for any purpose not reasonably intended by Christian Prayer Power Inc. By way of example but not as a limitation, you agree not to use the application and its services:
-    To abuse, harass, threaten, impersonate, or intimidate any person;
-  </div>
 </ion-content>
 
-<ion-content *ngIf="false">
-  <div style="text-align:center;margin-top:10px;font-size:18px;">
-    <b>My Profile</b>
+<ion-content *ngIf="pageNumber == 'edit'">
+  <div style="text-transform:capitalize;text-align:center;margin-top:10px;font-size:18px;">
+    <h3><b>My Profile</b></h3>
   </div>
   <div style="position:relative;display:block;width:100%;height:300px;">
-    <div style="position:absolute;left:0;right:0;top:0;bottom:0;width:200px;height:200px;border-radius:200px;margin:auto;border:2px solid gray;">
-    </div>
+      <div style="position:absolute;left:0;right:0;top:0;bottom:0;width:200px;height:200px;border-radius:200px;margin:auto;">
+      <img *ngIf="base64Image" [src]="base64Image" style="width:100%;height:100%;border-color:white;border-radius:100%;">
+      <img *ngIf="!base64Image" src="assets/images/default.png"  style="width:100%;height:100%;border-radius:100%;"/>
+      </div>
   </div>
   <div style="text-align:center;margin-top:10px;font-size:18px;color:red;">
-    <b>JAMES HUNT</b>
+    <b>{{ firstName }} {{lastName || "Raj"}}</b>
   </div>
   <div style="text-align:center;margin-top:10px;font-size:18px;">
-    <b>+91 7022 62 3975</b>
+    <b>{{phoneNumber || "+91 7022 62 3975"}}</b>
   </div>
-  <div padding style="text-align:center;margin-top:10px;font-size:18px;">
-    <button ion-button full color="danger">Create My Profile</button>
+  <div padding style="text-transform:capitalize;text-align:center;margin-top:10px;font-size:18px;">
+    <button ion-button full color="danger" tappable (click)="moveToEditScreen();">
+      <span style="text-transform:capitalize;">Edit Details</span>
+    </button>
+  </div>
+  <div padding style="text-transform:capitalize;text-align:center;margin-top:10px;font-size:18px;">
+    <a (click)="sendToSubscriptionPage()"><u>
+      <span style="text-transform:capitalize;">Subscription Options</span>
+    </u></a>
   </div>
 </ion-content>
 
-<ion-content padding *ngIf="false">
+<ion-content padding *ngIf="pageNumber == 'second'">
   <div class="title">
     <b>Create My Prayer Circle</b>
   </div>
   <div class="googleButton">
-    <button ion-button block style="background-color:red;width:100%;height:100%;">
-      <ion-icon ios="ios-call" md="md-call" style="font-size:30px;margin-right:15px;"></ion-icon>
-        <b style="font-size:19px;">Choose Contacts from My Phone</b>
-    </button>
-  </div>
-  <div class="facebookButton">
-    <button ion-button block style="background-color:blue;width:100%;height:100%;">
-      <ion-icon ios="ios-call" md="md-call" style="font-size:30px;margin-right:15px;"></ion-icon>
-        <b style="font-size:19px;">Choose Contacts from Facebook</b>
+    <button ion-button block tappable (click)=getContacts(); style="background-color:red;width:100%;height:100%;">
+      <img src="assets/images/book.png" style="width: 42px;height: 70%;margin-right:10px;"/>
+        <b style="font-size:16px;text-transform:capitalize;">Choose Contact from My Phone</b>
     </button>
   </div>
   <ion-grid style="padding-top:15px;">
     <ion-row>
       <ion-col col-2>
-        <ion-checkbox style="float:right;border-radius:20%;">
+        <ion-checkbox checked [(ngModel)]="checkedDataObject.check" style="float:right;border-radius:20%;">
         </ion-checkbox>
       </ion-col>
       <ion-col col-10 style="font-size:16px;">
@@ -115,15 +101,18 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-row style="margin-top:20%;">
+    <ion-col>
+      <span style="color:#ee2f24;">Invitations will be sent automatically to the people you have selected to be part of your Prayer Circle when you send out your first prayer request</span>
+    </ion-col>
+  </ion-row>
 </ion-content>
 
-<ion-footer *ngIf="false">
-  <ion-toolbar>
-    <div style="width:100%;height:100%;text-align:center;">
-      <button ion-button full style="background-color:white;"  (click)='openFilters();'>
-        <ion-icon ios="ios-home" md="md-home" style="color:red;padding-right:10px;font-size:30px;"></ion-icon>
-        <span style="color:black;font-size:20px;"><b>Home</b></span>
-      </button>
-    </div>
-  </ion-toolbar>
+<ion-footer *ngIf="pageNumber == 'edit' || flagToEdit == 1 || pageNumber == 'second'" style="height:50px;">
+    <button ion-button full style="background-color:white;margin:0;height:100%;"  tappable (click)='changePage();'>
+      <ion-icon ios="ios-home" md="md-home" style="color:red;padding-right:10px;font-size:30px;"></ion-icon>
+      <span style="text-transform:capitalize;color:red;font-size:20px;">
+        <b>Home</b>
+      </span>
+    </button>
 </ion-footer>
